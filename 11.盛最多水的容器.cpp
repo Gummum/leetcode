@@ -10,15 +10,15 @@ class Solution
 public:
     int maxArea(vector<int> &height)
     {
-        int area = 0;
-        for (int i = 0; i < height.size() - 1; i++)
+        int area = 0, left = 0, right = height.size() - 1;
+        while (left < right)
         {
-            for (int j = i + 1; j < height.size(); j++)
-            {
-                int tArea = (j - i) * min(height[i], height[j]);
-                if (tArea > area)
-                    area = tArea;
-            }
+            int h = min(height[left], height[right]);
+            area = max(area, h * (right - left));
+            while (left < right && h >= height[right])
+                right--;
+            while (left < right && h >= height[left])
+                left++;
         }
         return area;
     }
@@ -29,6 +29,6 @@ public:
     algorithms:
         转换成求矩形面积:(j-i)*min(height[i],height[j])
     超时了:
-        优化
+        优化o(n^2)->O(n)
 
 */
