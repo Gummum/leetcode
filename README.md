@@ -2,7 +2,7 @@
 
 ## 剑指offer    
 
-Read by Page 39
+Read by Page 75
 
 ## Not Pass
     1.剑指 Offer 05. 替换空格
