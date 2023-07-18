@@ -1,17 +1,9 @@
 /***
  * @Author: gongbinwen
  * @Date: 2023-07-17 19:24
- * @LastEditTime: 2023-07-17 19:46
- * @FilePath: \leetcode\79.单词搜索.cpp
- * @Description:
- * @
- */
-/***
- * @Author: gongbinwen
- * @Date: 2023-07-17 19:24
  * @LastEditTime: 2023-07-17 19:43
  * @FilePath: \leetcode\79.单词搜索.cpp
- * @Description:
+ * @Description:pass
  * @
  */
 
@@ -34,23 +26,31 @@ public:
         int up = i - 1, down = i + 1, left = j - 1, right = j + 1;
         if (up >= 0 && board[up][j] == word[0])
         {
+            char tmp = board[up][j];
             board[up][j] = '0';
             ret |= recurve(board, string(word.begin() + 1, word.end()), up, j);
+            board[up][j] = tmp;
         }
         if (down <= board.size() - 1 && board[down][j] == word[0])
         {
+            char tmp = board[down][j];
             board[down][j] = '0';
             ret |= recurve(board, string(word.begin() + 1, word.end()), down, j);
+            board[down][j] = tmp;
         }
         if (left >= 0 && board[i][left] == word[0])
         {
+            char tmp = board[i][left];
             board[i][left] = '0';
             ret |= recurve(board, string(word.begin() + 1, word.end()), i, left);
+            board[i][left] = tmp;
         }
         if (right <= board[0].size() - 1 && board[i][right] == word[0])
         {
+            char tmp = board[i][right];
             board[i][right] = '0';
             ret |= recurve(board, string(word.begin() + 1, word.end()), i, right);
+            board[i][right] = tmp;
         }
         return ret;
     }
@@ -70,8 +70,10 @@ public:
                         return true;
                     else
                     {
+                        char tmp = board[i][j];
                         board[i][j] = '0';
                         ret |= recurve(board, string(word.begin() + 1, word.end()), i, j);
+                        board[i][j] = tmp;
                     }
                 }
             }
@@ -88,6 +90,10 @@ public:
         2.递归
         3.上下左右判断边界，同时判断值
         4.相等就继续匹配，不相等就返回false
-
+    attention:标记了之后递归结束了要标记回去，不然下一个递归会出错
+    char tmp = board[i][j];
+    board[i][j] = '0';
+    ret |= recurve(board, string(word.begin() + 1, word.end()), i, j);
+    board[i][j] = tmp;
 
 */
