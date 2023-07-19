@@ -1,17 +1,10 @@
-/***
- * @Author: gongbinwen
- * @Date: 2023-07-19 19:37
- * @LastEditTime: 2023-07-19 19:57
+/*** 
+ * @Author: Gummum 1194148070@qq.com
+ * @Date: 2023-07-19 22:36
+ * @LastEditors: Gummum 1194148070@qq.com
+ * @LastEditTime: 2023-07-19 22:58
  * @FilePath: \leetcode\10.正则表达式匹配.cpp
- * @Description:
- * @
- */
-/***
- * @Author: gongbinwen
- * @Date: 2023-07-19 09:55
- * @LastEditTime: 2023-07-19 09:56
- * @FilePath: \leetcode\10.正则表达式匹配.cpp
- * @Description:
+ * @Description: 
  * @
  */
 
@@ -36,7 +29,7 @@ public:
                 if (count == 0)
                 {
                     count++;
-                    p.insert(i,1, s[i]);
+                    p.insert(i, 1, s[i]);
                 }
                 else
                 {
@@ -54,8 +47,8 @@ public:
                 return false;
             }
         }
-        if()
-        return true;
+        if ()
+            return true;
     }
 };
 // @lc code=end
