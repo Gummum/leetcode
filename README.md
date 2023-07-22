@@ -2,7 +2,7 @@
 
 ## 剑指offer
 
-Read by Page 114
+Read by Page 165
 
 ## Not Pass
 
@@ -10,6 +10,8 @@ Read by Page 114
     2.6.n-字形变换
     3.343.整数拆分
     4.10.正则表达式匹配.cpp
+    5.剑指 Offer 20. 表示数值的字符串.cpp
+    6.54.螺旋矩阵
 
 ## 排序
 
