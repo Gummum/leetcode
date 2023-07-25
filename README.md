@@ -2,7 +2,7 @@
 
 ## 剑指offer
 
-Read by Page 165
+Read by Page 227
 
 ## Not Pass
 
@@ -12,6 +12,7 @@ Read by Page 165
     4.10.正则表达式匹配.cpp
     5.剑指 Offer 20. 表示数值的字符串.cpp
     6.54.螺旋矩阵
+    7.233.数字-1-的个数.cpp
 
 ## 排序
 
