@@ -3,7 +3,7 @@
  * @Date: 2023-07-25 17:02
  * @LastEditTime: 2023-07-25 17:13
  * @FilePath: \leetcode\剑指 Offer 45. 把数组排成最小的数.cpp
- * @Description: 
+ * @Description: not pass
  * @
  */
 
@@ -28,10 +28,22 @@
 来源：力扣（LeetCode）
 链接：https://leetcode.cn/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof
 */
-
 class Solution {
 public:
-    string minNumber(vector<int>& nums) {
+    string minNumber(vector<int>& nums) 
+    {
+        sort(nums.begin(), nums.end(), [](int n1, int n2) {
+            string s1 = to_string(n1), s2 = to_string(n2);
+            return (s1 + s2) < (s2 + s1);
+        });
 
+        string ret;
+        for (auto& e : nums) 
+            ret += to_string(e);
+
+        return ret;
     }
 };
+/*
+    保证每个相邻的拼接成字符串最小
+*/
