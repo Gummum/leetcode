@@ -71,15 +71,15 @@ public:
     class Solution
     {
     public:
-        vector<int> tmp;
-        void mergeSort(vector<int> &nums, int leftIndex, int rightIndex)
+        
+        void mergeSort(vector<int> &nums,vector<int> &tmp, int leftIndex, int rightIndex)
         {
             if (leftIndex >= rightIndex)
                 return;
             int mid = (leftIndex + rightIndex) / 2;
 
-            mergeSort(nums, leftIndex, mid);
-            mergeSort(nums, mid + 1, rightIndex);
+            mergeSort(nums, tmp, leftIndex, mid);
+            mergeSort(nums, tmp, mid + 1, rightIndex);
             int i = leftIndex, j = mid + 1, cnt = 0;
             while (i <= mid && j <= rightIndex)
             {
@@ -105,8 +105,9 @@ public:
         {
             if (nums.size() == 1)
                 return nums;
+            vector<int> tmp;
             tmp.resize(nums.size(), 0);
-            mergeSort(nums, 0, nums.size() - 1);
+            mergeSort(nums, tmp, 0, nums.size() - 1);
             return nums;
         }
     };
