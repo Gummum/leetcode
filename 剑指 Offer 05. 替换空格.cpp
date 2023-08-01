@@ -1,7 +1,7 @@
-/*** 
+/***
  * @Author: gongbinwen
  * @Date: 2023-07-15 10:12
- * @LastEditTime: 2023-07-15 11:14
+ * @LastEditTime: 2023-08-02 00:46
  * @FilePath: \leetcode\剑指 Offer 05. 替换空格.cpp
  * @Description: not pass,下面是别人的答案，
  * @
@@ -22,22 +22,34 @@
 来源：力扣（LeetCode）
 链接：https://leetcode.cn/problems/ti-huan-kong-ge-lcof
 */
-class Solution {
+class Solution
+{
 public:
-    string replaceSpace(string s) {     //字符数组
-        string array;   //存储结果
-        
-        for(auto &c : s){   //遍历原字符串
-            if(c == ' '){
-                array.push_back('%');
-                array.push_back('2');
-                array.push_back('0');
+    string replaceSpace(string s)
+    { // 字符数组
+        if (s.size() == 0)
+            return s;
+        int spaceNum = 0;
+        for (auto &c : s)
+            if (c == ' ')
+                spaceNum++;
+        int oldStrIndex = s.size() - 1;
+        s.resize(s.size() + 2 * spaceNum, 0);
+        int newStrIndex = s.size() - 1;
+        while (oldStrIndex >= 0 && newStrIndex >= 0)
+        {
+            if (s[oldStrIndex] == ' ')
+            {
+                s[newStrIndex--] = '0';
+                s[newStrIndex--] = '2';
+                s[newStrIndex] = '%';
             }
-            else{
-                array.push_back(c);
-            }
+            else
+                s[newStrIndex] = s[oldStrIndex];
+            newStrIndex--;
+            oldStrIndex--;
         }
-        return array;
+        return s;
     }
 };
 /*
@@ -73,6 +85,20 @@ public:
                 slow--;
             }
         }
+    //别人的解法，用新string,代码简洁
+    string array;   //存储结果
+
+        for(auto &c : s){   //遍历原字符串
+            if(c == ' '){
+                array.push_back('%');
+                array.push_back('2');
+                array.push_back('0');
+            }
+            else{
+                array.push_back(c);
+            }
+        }
+        return array;
 */
 /*
     step1:

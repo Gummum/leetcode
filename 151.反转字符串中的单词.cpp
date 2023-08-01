@@ -3,7 +3,7 @@
  * @Date: 2023-07-29 14:46
  * @LastEditTime: 2023-07-29 15:13
  * @FilePath: \leetcode\151.反转字符串中的单词.cpp
- * @Description: pass
+ * @Description: not pass
  * @
  */
 
@@ -19,24 +19,7 @@ class Solution
 public:
     string reverseWords(string s)
     {
-        // 两次反转空间复杂度最低解法
-        reverse(s.begin(), s.end());
-        int index = 0;
-        for (int i = 0; i < s.size(); i++)
-        {
-            if (s[i] != ' ')
-            {
-                if (index != 0)
-                    s[index++] = ' ';
-                int end = i;
-                while (end < s.size() && s[end] != ' ')
-                    s[index++] = s[end++];
-                reverse(s.begin() + index - end + i, s.begin() + index);
-                i = end;
-            }
-        }
-        s.erase(s.begin() + index, s.end());
-        return s;
+        
     }
 };
 // @lc code=end
@@ -70,4 +53,23 @@ public:
             return result;
         }
     };
+
+    // 两次反转空间复杂度最低解法
+        reverse(s.begin(), s.end());
+        int index = 0;
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (s[i] != ' ')
+            {
+                if (index != 0)
+                    s[index++] = ' ';
+                int end = i;
+                while (end < s.size() && s[end] != ' ')
+                    s[index++] = s[end++];
+                reverse(s.begin() + index - end + i, s.begin() + index);
+                i = end;
+            }
+        }
+        s.resize(index+1);
+        return s;
 */
