@@ -3,7 +3,7 @@
  * @Date: 2023-07-22 11:18
  * @LastEditTime: 2023-07-22 13:23
  * @FilePath: \leetcode\142.环形链表-ii.cpp
- * @Description:pass
+ * @Description:pass，先快慢指针判断是否有环，然后让fast=head,继续遍历，相交即是环交点
  * @
  */
 
