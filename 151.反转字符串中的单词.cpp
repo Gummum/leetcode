@@ -3,7 +3,7 @@
  * @Date: 2023-07-29 14:46
  * @LastEditTime: 2023-07-29 15:13
  * @FilePath: \leetcode\151.反转字符串中的单词.cpp
- * @Description: not pass
+ * @Description: pass
  * @
  */
 
@@ -19,7 +19,23 @@ class Solution
 public:
     string reverseWords(string s)
     {
-        
+        reverse(s.begin(), s.end());
+        int index = 0;
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (s[i] != ' ')
+            {
+                if (index > 0)
+                    s[index++] = ' ';
+                int end = i;
+                while (end < s.size() && s[end] != ' ')
+                    s[index++] = s[end++];
+                reverse(s.begin() + index - end + i, s.begin() + index);
+                i = end;
+            }
+        }
+        s.resize(index);
+        return s;
     }
 };
 // @lc code=end
@@ -70,6 +86,6 @@ public:
                 i = end;
             }
         }
-        s.resize(index+1);
+        s.resize(index);
         return s;
 */
