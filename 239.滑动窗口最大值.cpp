@@ -4,7 +4,6 @@
  * @LastEditTime: 2023-07-29 15:45
  * @FilePath: \leetcode\239.滑动窗口最大值.cpp
  * @Description: not pass
- * @注意用deque！！！,queue不能从后面取元素，
  */
 
 /*
@@ -19,7 +18,17 @@ class Solution
 public:
     vector<int> maxSlidingWindow(vector<int> &nums, int k)
     {
-        int n = nums.size();
+        deque<int> deq;
+        for(int i=0;i<k;i++)
+        {
+            if(i!=0&&deq.back()<=)
+
+        }
+    }
+};
+// @lc code=end
+/*
+int n = nums.size();
         deque<int> q;
         for (int i = 0; i < k; i++)
         {
@@ -38,6 +47,4 @@ public:
             result.push_back(nums[q.front()]);
         }
         return result;
-    }
-};
-// @lc code=end
+        */
