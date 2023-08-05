@@ -1,10 +1,10 @@
 /*** 
  * @Author: Gummum 1194148070@qq.com
  * @Date: 2023-08-05 07:48
- * @LastEditors: Gummum 1194148070@qq.com
- * @LastEditTime: 2023-08-05 07:53
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-08-05 08:48
  * @FilePath: \leetcode\98.验证二叉搜索树.cpp
- * @Description: 
+ * @Description: not pass ，中序遍历，pre保存的是中序遍历后，vector[i-1]
  * @
  */
 
@@ -28,24 +28,18 @@
  */
 class Solution {
 public:
+    TreeNode *pre=nullptr;
     bool isValidBST(TreeNode* root) {
-        if(!root) return true;
-        bool flag=true;
-        if (root->left)
-        {
-            if (root->left->val < root->val)
-                flag&=isValidBST(root->left);
-            else
-                return false;
-        }
-        if (root->right)
-        {
-            if (root->right->val > root->val)
-                flag &= isValidBST(root->right);
-            else
-                return false;
-        }
-        return flag;
+        if(root==nullptr)return true;
+        bool left=isValidBST(root->left);
+
+        if(pre!=nullptr&&pre->val>=root->val)return false;
+        pre=root;
+
+        bool right=isValidBST(root->right);
+
+        return left&&right;
+        
     }
 };
 // @lc code=end
