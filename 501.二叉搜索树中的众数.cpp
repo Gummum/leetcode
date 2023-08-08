@@ -3,7 +3,7 @@
  * @Date: 2023-08-05 09:39
  * @LastEditTime: 2023-08-05 09:40
  * @FilePath: \leetcode\501.二叉搜索树中的众数.cpp
- * @Description: 
+ * @Description: not pass
  * @
  */
 
@@ -28,19 +28,40 @@
 class Solution {
 public:
     vector<int> result;
+    int maxCount;
+    int curCount;
+    TreeNode* pre;
     vector<int> findMode(TreeNode* root) {
         if(root==nullptr)return result;
-        search(root,0);
+        pre=nullptr;
+        maxCount=0;
+        curCount=0;
+        result.clear();
+        search(root);
         return result;
     }
-    void search(TreeNode* root,int size)
+    void search(TreeNode* root)
     {
         if(root==nullptr)return;
-        if(result.size()>0&&root->val==result.back())
+        search(root->left);
+        if(pre==nullptr)    
+            curCount=1;
+        else if(pre->val==root->val)
+            curCount++;       
+        else
+            curCount=1;
+        pre=root;
+        if(curCount==maxCount)
+            result.push_back(root->val);
+        if(curCount>maxCount)
         {
+            maxCount=curCount;
             result.clear();
-            result.push
+            result.push_back(root->val);
         }
+
+
+        search(root->right);
     }
 };
 // @lc code=end
