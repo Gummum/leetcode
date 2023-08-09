@@ -1,9 +1,9 @@
-/*** 
+/***
  * @Author: gongbinwen
  * @Date: 2023-08-05 09:39
  * @LastEditTime: 2023-08-05 09:40
  * @FilePath: \leetcode\501.二叉搜索树中的众数.cpp
- * @Description: not pass
+ * @Description:pass
  * @
  */
 
@@ -25,44 +25,44 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
     vector<int> result;
+    int count;
     int maxCount;
-    int curCount;
-    TreeNode* pre;
-    vector<int> findMode(TreeNode* root) {
-        if(root==nullptr)return result;
-        pre=nullptr;
-        maxCount=0;
-        curCount=0;
+    TreeNode *pre;
+    vector<int> findMode(TreeNode *root)
+    {
         result.clear();
-        search(root);
+        count = 0;
+        maxCount = 0;
+        pre = nullptr;
+        traversal(root);
         return result;
     }
-    void search(TreeNode* root)
+    void traversal(TreeNode *root)
     {
-        if(root==nullptr)return;
-        search(root->left);
-        if(pre==nullptr)    
-            curCount=1;
-        else if(pre->val==root->val)
-            curCount++;       
+        if (root == nullptr)
+            return;
+        traversal(root->left);
+
+        if (pre && pre->val == root->val)
+            count++;
         else
-            curCount=1;
-        pre=root;
-        if(curCount==maxCount)
-            result.push_back(root->val);
-        if(curCount>maxCount)
+            count = 1;
+
+        if (count > maxCount)
         {
-            maxCount=curCount;
+            maxCount = count;
             result.clear();
             result.push_back(root->val);
         }
+        else if (count == maxCount)
+            result.push_back(root->val);
+        pre = root;
 
-
-        search(root->right);
+        traversal(root->right);
     }
 };
 // @lc code=end
-
