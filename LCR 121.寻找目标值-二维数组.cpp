@@ -28,7 +28,22 @@ using namespace std;
 class Solution {
 public:
     bool findTargetIn2DPlants(vector<vector<int>>& plants, int target) {
-        
+        if (plants.size() == 0 || plants[0].size() == 0)
+            return false;
+
+        int i = plants[0].size() - 1;
+        int j = 0;
+        while (i >= 0 && j < plants.size())
+        {
+            int at = plants[j][i];
+            if (target == at)
+                return true;
+            else if (target > at)
+                j++;
+            else
+                i--;
+        }
+        return false;
     }
 };
 // @lc code=end

@@ -28,7 +28,16 @@ using namespace std;
 class Solution {
 public:
     int cuttingBamboo(int bamboo_len) {
-        
+        if (bamboo_len <= 3)
+            return bamboo_len - 1;
+
+        int r = bamboo_len % 3;
+        int a = bamboo_len / 3;
+        if (r == 2)
+            return pow(3, a) * 2;
+        else if (r == 1)
+            return pow(3, a - 1) * 4;
+        return pow(3, a);
     }
 };
 // @lc code=end

@@ -28,7 +28,20 @@ using namespace std;
 class Solution {
 public:
     int cuttingBamboo(int bamboo_len) {
-        
+        if (bamboo_len <= 3)
+            return bamboo_len - 1;
+
+        int r = bamboo_len % 3;
+        int a = bamboo_len / 3;
+        int p = 1000000007;
+        long rst = 1;
+        for (int i = 1; i < a; i++)
+            rst = 3 * rst % p;
+        if (r == 2)
+            return rst * 6 % p;
+        else if (r == 1)
+            return rst * 4 % p;
+        return rst * 3 % p;
     }
 };
 // @lc code=end
